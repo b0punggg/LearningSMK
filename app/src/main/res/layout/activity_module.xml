@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.module.ModuleActivity"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        >
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            >
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_room"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="15dp"
+                app:layout_collapseMode="parallax"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView
+                        android:id="@+id/image_cover"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/placeholder"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+                    <ImageView
+                        android:id="@+id/image_bookmark"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/ic_bookmark_add"
+                        app:tint="@color/blue_200"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/image_cover"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        tools:ignore="ContentDescription" />
+                    <TextView
+                        android:id="@+id/text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="10dp"
+                        tools:text="Personal Branding 101"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/image_cover"
+                        />
+                    <TextView
+                        android:id="@+id/text_mentor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="10dp"
+                        tools:text="Argenta Maulana"
+                        android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_person"
+                        app:drawableTint="@android:color/darker_gray"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_title"
+                        />
+
+                    <TextView
+                        android:id="@+id/text_modules"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="10dp"
+                        tools:text="10 Pelajaran"
+                        android:textSize="12sp"
+                        app:drawableStartCompat="@drawable/ic_books"
+                        app:drawableTint="@android:color/darker_gray"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_mentor"
+                        />
+                    <TextView
+                        android:id="@+id/text_views"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="10dp"
+                        tools:text="10x dilihat"
+                        android:textSize="12sp"
+                        app:drawableStartCompat="@drawable/ic_eye"
+                        app:drawableTint="@android:color/darker_gray"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toEndOf="@+id/text_modules"
+                        app:layout_constraintTop_toBottomOf="@+id/text_mentor"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_module"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/adapter_module"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/button_link"
+                />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_link"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="20dp"
+                android:text="Ada pertanyaan?"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:cornerRadius="10dp"
+                android:backgroundTint="@color/blue_500"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/list_module"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:ignore="HardcodedText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

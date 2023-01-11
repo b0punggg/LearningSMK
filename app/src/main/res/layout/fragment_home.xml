@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/swipe"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment"
+    >
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            >
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Halo, Argenta" />
+
+            <TextView
+                android:id="@+id/label_subtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/text_title"
+                app:layout_constraintStart_toStartOf="@+id/text_title"
+                app:layout_constraintTop_toBottomOf="@+id/text_title"
+                android:text="Selamat Datang"
+                tools:ignore="HardcodedText" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="@+id/text_title"
+                app:layout_constraintStart_toStartOf="@+id/text_title"
+                app:layout_constraintTop_toBottomOf="@+id/label_subtitle"
+                app:strokeColor="@android:color/darker_gray"
+                app:strokeWidth="1dp">
+
+                <EditText
+                    android:id="@+id/edit_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:drawableStart="@drawable/ic_search"
+                    android:hint="Cari Kelas..."
+                    android:padding="15dp"
+                    android:focusable="false"
+                    tools:ignore="HardcodedText" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/label_popular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/text_title"
+                app:layout_constraintEnd_toEndOf="@+id/text_title"
+                app:layout_constraintTop_toBottomOf="@+id/card_search"
+                android:text="Kelas Populer" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_popular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:clipToPadding="false"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_popular"
+                tools:listitem="@layout/adapter_popular" />
+
+            <TextView
+                android:id="@+id/label_latest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/text_title"
+                app:layout_constraintTop_toBottomOf="@+id/list_popular"
+                android:text="Kelas Terbaru" />
+
+            <TextView
+                android:id="@+id/text_latest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_500"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/label_latest"
+                app:layout_constraintEnd_toEndOf="@+id/text_title"
+                app:layout_constraintTop_toTopOf="@+id/label_latest"
+                tools:text="Lihat Semua" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_latest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_latest"
+                app:spanCount="2"
+                tools:listitem="@layout/adapter_course" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
